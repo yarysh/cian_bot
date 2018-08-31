@@ -16,11 +16,10 @@ if __name__ == '__main__':
             _, created = db.get_or_create(ad)
             if created:
                 walk = Distance.calc(ad.address)
-                message = '%s-ка%sна %s, %s\n%s' % (
-                    ad.rooms,
-                    ' в <b>%s от офиса</b> ' % walk['text'] if walk['value'] else ' ',
+                message = '%s, %s, %s\n%s' % (
+                    '<b>%s от офиса</b> ' % walk['text'] if walk['value'] else ' ',
                     ad.address,
-                    ad.price,
+                    '<b>%s</b>' % ad.price,
                     ad.url
                 )
                 Bot.notify(message)
