@@ -5,7 +5,7 @@ from db import DB
 from cian import Cian
 from config import CIAN_URLS
 from distance import Distance
-
+import re
 
 if __name__ == '__main__':
     for url in CIAN_URLS:
@@ -16,10 +16,14 @@ if __name__ == '__main__':
             _, created = db.get_or_create(ad)
             if created:
                 walk = Distance.calc(ad.address)
-                message = '%s, %s, %s\n%s' % (
+                matches = re.search('([0-9.]+)', ad.price)
+                priceForMonth = matches.group()
+                restOfPrice = matches.group() + ad.price[matches.end():]
+                message = '%s, %s, %s, %s\n%s' % (
                     '<b>%s от офиса</b> ' % walk['text'] if walk['value'] else ' ',
                     ad.address,
-                    '<b>%s</b>' % ad.price,
+                    '<b>%s</b>' % priceForMonth,
+                    restOfPrice,
                     ad.url
                 )
                 Bot.notify(message)
