@@ -14,8 +14,7 @@ class Cian:
     def _download_xlsx(self):
         resp = requests.get(
             self.url,
-            headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.0 Safari/537.36'},
-            # proxies={'http': 'socks5h://localhost:9050', 'https': 'socks5h://localhost:9050'},
+            headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:74.0) Gecko/20100101 Firefox/74.0'}
         )
         if resp.status_code != 200: return None
         with open('tmp/cian.xlsx', 'wb') as f:
