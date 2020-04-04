@@ -1,12 +1,12 @@
-import requests
+import os
 
-from config import BOT
+import requests
 
 
 class Bot:
     @staticmethod
     def notify(message):
         requests.get(
-            'https://api.telegram.org/%s/sendMessage' % BOT['token'],
-            params={'chat_id': BOT['chat'], 'text': message, 'parse_mode': 'HTML'}
+            'https://api.telegram.org/%s/sendMessage' % os.getenv('BOT_TOKEN'),
+            params={'chat_id': os.getenv('BOT_CHAT'), 'text': message, 'parse_mode': 'HTML'}
         )
