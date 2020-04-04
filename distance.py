@@ -1,6 +1,6 @@
-import requests
+import os
 
-from config import GOOGLE_DISTANCE_API_KEY
+import requests
 
 
 class Distance:
@@ -15,7 +15,7 @@ class Distance:
                 'destinations': '55.792589, 37.527588',
                 'mode': 'walking',
                 'language': 'ru',
-                'key': GOOGLE_DISTANCE_API_KEY,
+                'key': os.getenv('GOOGLE_DISTANCE_API_KEY'),
             }
         )
         if resp.status_code != 200: return result
