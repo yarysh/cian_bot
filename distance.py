@@ -12,7 +12,7 @@ class Distance:
             'https://maps.googleapis.com/maps/api/distancematrix/json',
             params={
                 'origins': origin,
-                'destinations': '55.792589, 37.527588',
+                'destinations': '55.7970569, 37.5174374',
                 'mode': 'walking',
                 'language': 'ru',
                 'key': os.getenv('GOOGLE_DISTANCE_API_KEY'),
